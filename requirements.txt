@@ -1,0 +1,7 @@
+loguru
+fastapi
+pydantic
+uvicorn
+starlette_exporter
+sqlalchemy-redshift
+redshift_connector

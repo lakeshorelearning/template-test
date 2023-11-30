@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: template-test-configuration
+  namespace: default
+data:
+  CONFIG_LOG_LEVEL: "DEBUG"
+  WEB_CONCURRENCY: "1"

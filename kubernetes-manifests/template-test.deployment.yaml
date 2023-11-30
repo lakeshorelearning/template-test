@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: template-test
+  labels:
+    app:  template-test
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: template-test
+  template:
+    metadata:
+      labels:
+        app:  template-test
+    spec:
+      containers:
+      - name:  template-test
+        image: 716039874842.dkr.ecr.us-west-2.amazonaws.com/template-test:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080
+        envFrom:
+        - configMapRef:
+            name: template-test-configuration
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 8080
+          initialDelaySeconds: 10
+          periodSeconds: 5
+        readinessProbe:
+          httpGet:
+            path: /readiness
+            port: 8080
+          initialDelaySeconds: 10
+          periodSeconds: 5
+        
+        

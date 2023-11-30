@@ -1,0 +1,10 @@
+version: "3"
+services:
+    microservice:
+        build: .
+        hostname: template-test
+        container_name: template-test
+        restart: on-failure
+        ports:
+            - "9090:80"
+
